@@ -26,27 +26,42 @@ public class LinkTableReverseClass16 {
 	}
 	//单链表反转
 	public void reverseLinkTable(){
-		int i=0;
-		Node preNode=head;
-		Node currNode=preNode.next;
-		Node nextNode=currNode.next;
-		
-		while(nextNode.next!=null){
-			if(preNode==head){
-				preNode.next=null;	
+//		int i=0;
+//		Node preNode=head;
+//		Node currNode=preNode.next;
+//		Node nextNode=currNode.next;
+//		
+//		while(nextNode.next!=null){
+//			if(preNode==head){
+//				preNode.next=null;	
+//			}
+//			currNode.next=preNode;
+//			//变量都后移  顺序preNode  currNode nextNode
+//			preNode=currNode;
+//			currNode=nextNode;
+//			nextNode=nextNode.next;
+//			i++;
+//		}
+//		currNode.next=preNode;
+//		
+//		nextNode.next=currNode;
+//		head=nextNode;
+		Node pReversedHead=null;
+		Node pNode=head;
+		Node pPrev=null;
+		while(pNode!=null){
+			Node pNext=pNode.next;
+			if(pNext==null){
+				pReversedHead=pNode;
 			}
-			currNode.next=preNode;
-			//变量都后移  顺序preNode  currNode nextNode
-			preNode=currNode;
-			currNode=nextNode;
-			nextNode=nextNode.next;
-			i++;
+			pNode.next=pPrev;
+			pPrev=pNode;
+			pNode=pNext;
 		}
-		//尾部数据处理
-		currNode.next=preNode;
-		
-		nextNode.next=currNode;
-		head=nextNode;
+		while(pReversedHead!=null){
+			System.out.print(pReversedHead.obj);
+			pReversedHead=pReversedHead.next;
+		}
 	}
 	
 	public static void main(String[] args) {
